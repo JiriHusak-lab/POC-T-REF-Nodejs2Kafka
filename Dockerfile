@@ -9,9 +9,9 @@ COPY package.json /app/package.json
 RUN npm install \
  && npm ls \
  && npm cache clean --force \
- && mv /app/node_modules /node_modules
-
-RUN npm install kafka-node
+ && mv /app/node_modules /node_modules \
+ && npm install python \
+ && npm install kafka-node
  
 COPY . /app
 #RUN chmod 755 /app/result_live_chk.sh
