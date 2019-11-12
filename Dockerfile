@@ -12,7 +12,7 @@ RUN npm install \
  && mv /app/node_modules /node_modules 
  
 RUN npm install python \
- && npm i async \
+# && npm i async \
 # && npm i binary \
 # && npm i bl \
 # && npm i buffer-crc32 \
@@ -23,9 +23,9 @@ RUN npm install python \
 # && npm i minimatch \
 # && npm i nested-error-stack \
 # && npm i optional \
- && npm i retry \
- && npm i uuid \
- && npm i snappy \
+# && npm i retry \
+# && npm i uuid \
+# && npm i snappy \
  && npm install kafka-node
  
 COPY . /app
