@@ -21,20 +21,17 @@ var kafka = require('kafka-node'),
 
 
 
-
-producer.on('readyunction () {
+/*
+producer.on('ready' () {
     producer.send(payloads, function (err, data) {
         console.log(data);
         process.exit(0);
     });
 });
- 
-producer.on('errorunction (err) {
-console.log('ERROR+ err.toString();
-})
-
-
-
+*/
+producer.send(payloads, function (err, data) {
+       console.log(data);
+});
 
 
 
