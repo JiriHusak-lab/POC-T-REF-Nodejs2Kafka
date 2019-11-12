@@ -1,9 +1,10 @@
 	//import { KafkaClient as Client, Producer, ProduceRequest } from 'apache-kafka';
-	
+
+// Kafka configuration
 const kafkaHost = 'apache-kafka:9092';
 var kafka = require('kafka-node');
 var Producer = kafka.Producer;
-var client = new kafka.Client('apache-kafka:9092');
+var client = new kafka.KafkaClient('apache-kafka:9092');
 //    client = kafka.KafkaClient();
 //    producer = new Producer(client);
 //	client = new Client({ kafkaHost }, 'my-kafka-client-001');
