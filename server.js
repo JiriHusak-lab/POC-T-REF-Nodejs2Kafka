@@ -4,7 +4,7 @@
 const kafkaHost = 'apache-kafka:9092';
 var kafka = require('kafka-node');
 var Producer = kafka.Producer;
-var client = new kafka.KafkaClient('apache-kafka:9092');
+var client = new kafka.KafkaClient('apache-kafka:9092/');
 //    client = kafka.KafkaClient();
 //    producer = new Producer(client);
 //	client = new Client({ kafkaHost }, 'my-kafka-client-001');
@@ -12,12 +12,18 @@ var client = new kafka.KafkaClient('apache-kafka:9092');
 // For this demo we just log client errors to the console.
 var producer = new Producer(client);
 var ProducerReady = false;
+var ClientReady = false;
 var WMJTopic = "wmj-topic";
+console.error("Kafka base setup done");
 
+client.on('ready', function () {
+    console.log("Client is ready");
+    ClientReady = true;
+});
 client.on('error', function(error) {
   console.error(error);
 });
-console.error("Kafka setup done");
+
 
 producer.on('ready', function () {
     console.log("Producer is ready");
@@ -26,6 +32,7 @@ producer.on('ready', function () {
 producer.on('error', function (err) {
   console.error("Problem with producing Kafka message "+err);
 })
+
 
 payloads = [
        { topic: WMJTopic, messages: "HAVLELUJA", partition: 0 },
