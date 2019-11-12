@@ -1,12 +1,12 @@
 	//import { KafkaClient as Client, Producer, ProduceRequest } from 'apache-kafka';
-var kafka = require('apache-kafka'),
-    Producer = kafka.Producer,
-    client = kafka.KafkaClient();
-//    producer = new Producer(client);
-
-const kafkaHost = 'apache-kafka:9092';
 	
-	client = new Client({ kafkaHost }, 'my-kafka-client-001');
+const kafkaHost = 'apache-kafka:9092';
+var kafka = require('kafka-node');
+var Producer = kafka.Producer;
+var client = new kafka.Client('apache-kafka:9092');
+//    client = kafka.KafkaClient();
+//    producer = new Producer(client);
+//	client = new Client({ kafkaHost }, 'my-kafka-client-001');
 //const client = new kafka.KafkaClient({kafkaHost: 'apache-kafka:9092'});
 // For this demo we just log client errors to the console.
 client.on('error', function(error) {
