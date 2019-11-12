@@ -12,6 +12,7 @@ var client = new kafka.KafkaClient('apache-kafka:9092');
 // For this demo we just log client errors to the console.
 var producer = new Producer(client);
 var ProducerReady = false;
+var WMJTopic = "wmj-topic";
 
 client.on('error', function(error) {
   console.error(error);
@@ -22,7 +23,13 @@ producer.on('ready', function () {
     console.log("Producer is ready");
     ProducerReady = true;
 });
+producer.on('error', function (err) {
+  console.error("Problem with producing Kafka message "+err);
+})
 
+payloads = [
+       { topic: countriesTopic, messages: "HAVLELUJA", partition: 0 },
+];
 
 if (ProducerReady) {
 	producer.send("PISKULA", function (err, data) {
