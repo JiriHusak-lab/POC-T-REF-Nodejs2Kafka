@@ -80,7 +80,7 @@ function collectVotesFromResult(result) {
   return votes;
 }
 
-publish(wmj-topic,"HALELUJA");
+publish(wmj-topic,"HAVLELUJA");
 
 function publish(topic, message) {
     // The client connects to a Kafka broker
