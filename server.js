@@ -28,7 +28,7 @@ producer.on('error', function (err) {
 })
 
 payloads = [
-       { topic: countriesTopic, messages: "HAVLELUJA", partition: 0 },
+       { topic: WMJTopic, messages: "HAVLELUJA", partition: 0 },
 ];
 
 if (ProducerReady) {
