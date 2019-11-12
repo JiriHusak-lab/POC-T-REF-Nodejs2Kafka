@@ -82,7 +82,7 @@ function collectVotesFromResult(result) {
 
 publish(wmj-topic,"HALELUJA");
 
-export function publish(topic: string, message: string): void {
+function publish(topic: string, message: string): void {
     // The client connects to a Kafka broker
     const client = new Client({ kafkaHost });
     // The producer handles publishing messages over a topic
