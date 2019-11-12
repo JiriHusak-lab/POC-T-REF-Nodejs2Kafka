@@ -10,9 +10,33 @@ var client = new kafka.KafkaClient('apache-kafka:9092');
 //	client = new Client({ kafkaHost }, 'my-kafka-client-001');
 //const client = new kafka.KafkaClient({kafkaHost: 'apache-kafka:9092'});
 // For this demo we just log client errors to the console.
+var producer = new Producer(client);
+
 client.on('error', function(error) {
   console.error(error);
 });
+console.error("Kafka setup done");
+
+producer.on('ready', function () {
+    console.log("Producer is ready");
+    //ProducerReady = true;
+});
+
+
+
+producer.send("PISKULA", function (err, data) {
+        console.log(data);
+    });
+} else {
+        console.error("sorry, Producer is not ready yet, failed to produce message to Kafka.");
+}
+
+
+
+
+
+
+
 
 
 var express = require('express'),
