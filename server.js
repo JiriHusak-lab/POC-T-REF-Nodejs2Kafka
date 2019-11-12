@@ -1,6 +1,6 @@
-import { KafkaClient as Client, Producer, ProduceRequest } from 'kafka-node';
+import { KafkaClient as Client, Producer, ProduceRequest } from 'apache-kafka';
 
-const kafkaHost = 'localhost:9092';
+const kafkaHost = 'apache-kafka:9092';
 const client = new Client({ kafkaHost });
 
 
