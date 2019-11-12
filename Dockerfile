@@ -20,7 +20,7 @@ RUN npm install python \
  && npm i debug \
  && npm i denque \
  && npm i lodash \
- && npm i minimatch \
+# && npm i minimatch \
  && npm i nested-error-stack \
  && npm i optional \
  && npm i retry \
