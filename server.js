@@ -11,6 +11,7 @@ var client = new kafka.KafkaClient('apache-kafka:9092');
 //const client = new kafka.KafkaClient({kafkaHost: 'apache-kafka:9092'});
 // For this demo we just log client errors to the console.
 var producer = new Producer(client);
+var ProducerReady = false;
 
 client.on('error', function(error) {
   console.error(error);
@@ -19,12 +20,12 @@ console.error("Kafka setup done");
 
 producer.on('ready', function () {
     console.log("Producer is ready");
-    //ProducerReady = true;
+    ProducerReady = true;
 });
 
 
-
-producer.send("PISKULA", function (err, data) {
+if (ProducerReady) {
+	producer.send("PISKULA", function (err, data) {
         console.log(data);
     });
 } else {
@@ -66,9 +67,10 @@ io.sockets.on('connection', function (socket) {
 async.retry(
   {times: 5, interval: 1000},
   function(callback) {
-    pg.connect('postgres://postgres@db/postgres', function(err, client, done) {
+    //pg.connect('postgres://postgres@db/postgres', function(err, client, done) {
+	pg.connect('db2-wmj://postgres@db/postgres', function(err, client, done) {
       if (err) {
-        console.error("Waiting for db");
+        console.error("Waiting for db2");
       }
       callback(err, client);
     });
