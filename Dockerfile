@@ -13,8 +13,8 @@ RUN npm install \
 COPY . /app
 #RUN chmod 755 /app/result_live_chk.sh
 
-ENV PORT 80
-EXPOSE 80
+ENV PORT 1337
+EXPOSE 1337
 
 CMD ["node", "server.js"]
 #CMD exec /bin/sh -c "trap : TERM INT; (while true; do sleep 1000; done) & wait"
