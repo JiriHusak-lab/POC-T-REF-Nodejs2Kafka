@@ -2,15 +2,45 @@
 
 // Kafka configuration
 const kafkaHost = 'apache-kafka:9092';
-var kafka = require('kafka-node');
-var Producer = kafka.Producer;
-var client = new kafka.KafkaClient('apache-kafka:9092/');
+var kafka = require('kafka-node'),
+    Producer = kafka.Producer,
+	KeyedMessage = kafka.KeyedMessage,
+    client = new kafka.KafkaClient('apache-kafka:9092/'),
+	producer = new Producer(client),
+	km = new KeyedMessage('key', 'message'),
+    payloads = [
+        { topic: 'wmj-topic', messages: 'fourth color is yellow', partition: 0 },
+        { topic: 'wmj-topic', messages: 'fifth color is green', partition: 0 }
+     
+    ];
 //    client = kafka.KafkaClient();
 //    producer = new Producer(client);
 //	client = new Client({ kafkaHost }, 'my-kafka-client-001');
 //const client = new kafka.KafkaClient({kafkaHost: 'apache-kafka:9092'});
 // For this demo we just log client errors to the console.
-var producer = new Producer(client);
+
+
+
+
+producer.on('readyunction () {
+    producer.send(payloads, function (err, data) {
+        console.log(data);
+        process.exit(0);
+    });
+});
+ 
+producer.on('errorunction (err) {
+console.log('ERROR+ err.toString();
+})
+
+
+
+
+
+
+
+
+
 var ProducerReady = false;
 var ClientReady = false;
 var WMJTopic = "wmj-topic";
