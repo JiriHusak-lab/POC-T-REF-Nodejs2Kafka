@@ -1,3 +1,9 @@
+import { KafkaClient as Client, Producer, ProduceRequest } from 'kafka-node';
+
+const kafkaHost = 'localhost:9092';
+const client = new Client({ kafkaHost });
+
+
 var express = require('express'),
     async = require('async'),
     pg = require("pg"),
@@ -23,7 +29,7 @@ io.sockets.on('connection', function (socket) {
 });
 
 async.retry(
-  {times: 1000, interval: 1000},
+  {times: 5, interval: 1000},
   function(callback) {
     pg.connect('postgres://postgres@db/postgres', function(err, client, done) {
       if (err) {
