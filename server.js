@@ -2,9 +2,12 @@
 //exports.KafkaClient = require('./lib/kafkaClient');
 
 // Kafka configuration
-console.log("000 Kafka base setup start");
+console.log("000 Kafka base setup start"); //---------------------------------
 const kafkaHost = 'apache-kafka:9092';
+
 const kafka = require('kafka-node');
+var Producer = kafka.Producer;
+var KeyedMessage = kafka.KeyedMessage;
 
 const {
   KAFKA_HOST,
@@ -17,24 +20,26 @@ const {
 } = require('./config');
 
 
-var Producer = kafka.Producer,
-	KeyedMessage = kafka.KeyedMessage;
 
-console.log("001 Kafka CLIENT base setup start");
+
+	
+console.log("001 Kafka CLIENT base setup start");  //---------------------------------
     //client = new kafka.KafkaClient('172.21.25.217:9092','kafka-node-client'),
 	//client = new kafka.Client('172.21.25.217:9092','kafka-node-client'),
 	//client = new kafka.Client('apache-kafka:9092/'),
 	//client = new kafka.KafkaClient();
 	//client = new kafka.Client();
 	//client = new Client({ kafkaHost }, 'my-kafka-client-001');
-//const client = new kafka.KafkaClient({kafkaHost: 'apache-kafka:9092'});
-
+const client = new kafka.KafkaClient({kafkaHost: 'apache-kafka:9092'});
+/*
 const Client = kafka.KafkaClient;
 const client = new Client({
         autoConnect: false,
         kafkaHost: 'apache-kafka:9092'
  });
-	
+*/
+
+
 const consumerGroup = new kafka.ConsumerGroupStream(
   {
     kafkaHost: KAFKA_HOST,
@@ -48,8 +53,10 @@ const consumerGroup = new kafka.ConsumerGroupStream(
   TOPIC
 );
 
-console.log("002 Kafka PRODUCER base setup start");
+console.log("002 Kafka PRODUCER base setup start");//---------------------------------
 //    producer = new Producer(client);
+
+
 var	producer = new kafka.Producer(client, PRODUCER_CONFIG, 0),
 	km = new KeyedMessage('key', 'message'),
     payloads = [
@@ -57,19 +64,18 @@ var	producer = new kafka.Producer(client, PRODUCER_CONFIG, 0),
         { topic: 'wmj-topic', messages: 'fifth color is green', partition: 0 }
      
     ];
-
-console.log("110 Kafka base setup done");
-
-
-/*
-producer.on('ready' () {
+producer.on('ready', function () {
     producer.send(payloads, function (err, data) {
         console.log(data);
-        process.exit(0);
+		console.log("009 Producer.on ready");
     });
+	console.log("010 Producer.on ready");
 });
-*/
-console.log("120 Will try to put message to Kafka");
+console.log("110 Kafka base setup done");//---------------------------------
+
+
+
+console.log("120 Will try to put message to Kafka");//---------------------------------
 
 payloads = [
        { topic: WMJTopic, messages: "HAVLELUJA", partition: 0 },
@@ -77,10 +83,6 @@ payloads = [
 producer.send(payloads, function (err, data) {
        console.log(data);
 });
-
-
-
-
 
 
 var ProducerReady = false;
@@ -109,7 +111,7 @@ producer.on('error', function (err) {
 
 
 
-console.log("160 Will try to put message to Kafka");
+console.log("160 Will try to put message to Kafka");//---------------------------------
 if (ProducerReady) {
 	producer.send("PISKULA", function (err, data) {
         console.log(data);
@@ -122,9 +124,7 @@ if (ProducerReady) {
 
 
 
-
-
-
+// ORIGINAL APP START -------------------------------
 
 var express = require('express'),
     async = require('async'),
