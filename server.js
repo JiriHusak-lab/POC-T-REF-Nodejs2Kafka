@@ -2,6 +2,7 @@
 //exports.KafkaClient = require('./lib/kafkaClient');
 
 // Kafka configuration
+console.log("000 Kafka base setup start");
 const kafkaHost = 'apache-kafka:9092';
 const kafka = require('kafka-node');
 
@@ -18,12 +19,15 @@ const {
 
 var Producer = kafka.Producer,
 	KeyedMessage = kafka.KeyedMessage;
-	
+
+console.log("001 Kafka CLIENT base setup start");
     //client = new kafka.KafkaClient('172.21.25.217:9092','kafka-node-client'),
 	//client = new kafka.Client('172.21.25.217:9092','kafka-node-client'),
 	//client = new kafka.Client('apache-kafka:9092/'),
-	// client = new kafka.KafkaClient();
-	// client = new kafka.Client();
+	//client = new kafka.KafkaClient();
+	//client = new kafka.Client();
+	//client = new Client({ kafkaHost }, 'my-kafka-client-001');
+//const client = new kafka.KafkaClient({kafkaHost: 'apache-kafka:9092'});
 
 const Client = kafka.KafkaClient;
 const client = new Client({
@@ -44,6 +48,8 @@ const consumerGroup = new kafka.ConsumerGroupStream(
   TOPIC
 );
 
+console.log("002 Kafka PRODUCER base setup start");
+//    producer = new Producer(client);
 var	producer = new kafka.Producer(client, PRODUCER_CONFIG, 0),
 	km = new KeyedMessage('key', 'message'),
     payloads = [
@@ -52,11 +58,7 @@ var	producer = new kafka.Producer(client, PRODUCER_CONFIG, 0),
      
     ];
 
-//    producer = new Producer(client);
-//	client = new Client({ kafkaHost }, 'my-kafka-client-001');
-//const client = new kafka.KafkaClient({kafkaHost: 'apache-kafka:9092'});
-// For this demo we just log client errors to the console.
-console.error("Kafka base setup done");
+console.log("110 Kafka base setup done");
 
 
 /*
@@ -67,7 +69,11 @@ producer.on('ready' () {
     });
 });
 */
-console.error("Will try to put message to Kafka");
+console.log("120 Will try to put message to Kafka");
+
+payloads = [
+       { topic: WMJTopic, messages: "HAVLELUJA", partition: 0 },
+];
 producer.send(payloads, function (err, data) {
        console.log(data);
 });
@@ -83,35 +89,33 @@ var WMJTopic = "wmj-topic";
 
 
 client.on('ready', function () {
-    console.log("Kafka client is ready");
+    console.log("130 Kafka client is ready");
     ClientReady = true;
 });
 client.on('error', function(error) {
-  console.log("Kafka client is NOT ready"+err);
+  console.log("130 Kafka client is NOT ready"+err);
   //console.error(error);
 });
 
 
 producer.on('ready', function () {
-    console.log("Producer is ready");
+    console.log("140 Producer is ready");
     ProducerReady = true;
 });
 producer.on('error', function (err) {
-	console.log("Problem with producing Kafka message "+err);
+	console.log("140 Problem with producing Kafka message "+err);
 	//console.error("Problem with producing Kafka message "+err);
 })
 
 
-payloads = [
-       { topic: WMJTopic, messages: "HAVLELUJA", partition: 0 },
-];
 
+console.log("160 Will try to put message to Kafka");
 if (ProducerReady) {
 	producer.send("PISKULA", function (err, data) {
         console.log(data);
     });
 } else {
-        console.error("sorry, Producer is not ready yet, failed to produce message to Kafka.");
+        console.error("160 Sorry, Producer is not ready yet, failed to produce message to Kafka.");
 }
 
 
