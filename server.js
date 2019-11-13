@@ -132,9 +132,30 @@ console.log("115 producer.send natvrdo");//---------------------------------
 		}
 		*/
 
+		
+console.log("200 COnsumer part");//---------------------------------		
+ var Consumer = kafka.Consumer,
+     consumer = new Consumer(
+        client,
+        [
+            { topic: 'wmj-topic', partition: 0 }
+        ],
+        {
+            autoCommit: false
+        }
+    );		
+
+console.log("210 COnsumer part - nactu");//---------------------------------	
+consumer.on('message', function (message) {
+    console.log(message);
+});	
 	
+	
+	
+	
+
 // DB2 CONECT A---------------------------------------
-//var ibmdb = require('ibm_db2');
+// var ibmdb = require('ibm_db2');
 /*
 //ibmdb.open("DRIVER={DB2};DATABASE=TESTDB;HOSTNAME=db2-wmj;UID=testdb;PWD=db234;PORT=50000;PROTOCOL=TCPIP", function (err,
 //cn ="DATABASE=dbname;HOSTNAME=hostname;PORT=port;PROTOCOL=TCPIP;UID=dbuser;PWD=xxx";
