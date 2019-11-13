@@ -6,7 +6,8 @@ var kafka = require('kafka-node'),
     Producer = kafka.Producer,
 	KeyedMessage = kafka.KeyedMessage,
     //client = new kafka.KafkaClient('172.21.25.217:9092','kafka-node-client'),
-	client = new kafka.Client('172.21.25.217:9092','kafka-node-client'),
+	//client = new kafka.Client('172.21.25.217:9092','kafka-node-client'),
+	client = new kafka.Client('apache-kafka:9092/'),
 	producer = new Producer(client),
 	km = new KeyedMessage('key', 'message'),
     payloads = [
@@ -50,9 +51,8 @@ client.on('ready', function () {
     ClientReady = true;
 });
 client.on('error', function(error) {
-  console.log("Kafka client is NOT ready");
-  console.log("error");
-  console.error(error);
+  console.log("Kafka client is NOT ready"+err);
+  //console.error(error);
 });
 
 
@@ -62,7 +62,7 @@ producer.on('ready', function () {
 });
 producer.on('error', function (err) {
 	console.log("Problem with producing Kafka message "+err);
-	console.error("Problem with producing Kafka message "+err);
+	//console.error("Problem with producing Kafka message "+err);
 })
 
 
