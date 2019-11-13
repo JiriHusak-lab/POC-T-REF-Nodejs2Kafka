@@ -63,7 +63,8 @@ var	producer = new Producer(client),
 	km = new KeyedMessage('key', 'message'),
     payloads = [
         { topic: 'wmj-topic', messages: 'fourth color is yellow', partition: 0 }
-        //{ topic: 'wmj-topic', messages: 'fifth color is green', partition: 0 }
+        { topic: 'wmj-topic', messages: 'fifth color is green', partition: 0 }
+		{ topic: 'wmj-topic', messages: 'sixth color is BLSCK', partition: 0 }
     ];
 producer.on('ready', function () {
     producer.send(payloads, function (err, data) {
