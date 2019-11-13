@@ -29,7 +29,7 @@ RUN npm install python \
 # && npm i snappy \
  && npm install kafka-node
  
-RUN npm install ibm_db2
+#RUN npm install ibm_db2
 
 COPY . /app
 #RUN chmod 755 /app/result_live_chk.sh
