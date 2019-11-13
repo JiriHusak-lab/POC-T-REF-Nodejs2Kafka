@@ -62,9 +62,9 @@ console.log("002 Kafka PRODUCER base setup start");//---------------------------
 var	producer = new Producer(client),
 	km = new KeyedMessage('key', 'message'),
     payloads = [
-        { topic: 'wmj-topic', messages: 'fourth color is yellow', partition: 0 }
-        { topic: 'wmj-topic', messages: 'fifth color is green', partition: 0 }
-		{ topic: 'wmj-topic', messages: 'sixth color is BLSCK', partition: 0 }
+        { topic: 'wmj-topic', messages: 'fourth color is yellow', partition: 0 },
+        { topic: 'wmj-topic', messages: 'fifth color is green', partition: 0 },
+		{ topic: 'wmj-topic', messages: 'sixth color is BLACK', partition: 0 }
     ];
 producer.on('ready', function () {
     producer.send(payloads, function (err, data) {
@@ -75,11 +75,13 @@ producer.on('ready', function () {
 });
 console.log("110 Kafka base setup done");//---------------------------------
 
+/*
 console.log("115 producer.send natvrdo");//---------------------------------
     producer.send(payloads, function (err, data) {
         console.log(data);
 		console.log("009 Producer.on ready");
     });
+*/
 
 	/*
 	console.log("120 Will try to put message to Kafka");//---------------------------------
