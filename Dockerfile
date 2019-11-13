@@ -15,6 +15,9 @@ COPY package.json /app/package.json
  
 # --no-cache: download package index on-the-fly, no need to cleanup afterwards
 # --virtual: bundle packages, remove whole bundle at once, when done
+
+yum install make gcc gcc-c++ kernel-devel openssl-devel bzip2-devel
+
 RUN apk --no-cache --virtual build-dependencies add \
     python \
     make \
@@ -22,7 +25,7 @@ RUN apk --no-cache --virtual build-dependencies add \
     && npm install \
 #    && npm install python \
     && npm install kafka-node \
-	&& apk --update add openssl-devel \
+    && apk --update add openssll \
     && npm install --unsafe-perm ibm_db2 \
     && npm install --unsafe-perm ibm_db \
 	&& npm ls \
