@@ -12,7 +12,7 @@ RUN npm install \
  && npm cache clean --force \
  && mv /app/node_modules /node_modules 
  
-RUN npm install python \
+#RUN npm install python \
 # && npm i async \
 # && npm i binary \
 # && npm i bl \
@@ -27,8 +27,20 @@ RUN npm install python \
 # && npm i retry \
 # && npm i uuid \
 # && npm i snappy \
- && npm install kafka-node
- 
+# && npm install kafka-node
+
+# --no-cache: download package index on-the-fly, no need to cleanup afterwards
+# --virtual: bundle packages, remove whole bundle at once, when done
+RUN apk --no-cache --virtual build-dependencies add \
+    python \
+    make \
+    g++ \
+    && npm install \
+#    && npm install python \
+    && npm install kafka-node \
+    && npm install ibm_db2 \
+    && apk del build-dependencies
+
 #RUN npm install ibm_db2
 
 COPY . /app
