@@ -22,8 +22,9 @@ RUN apk --no-cache --virtual build-dependencies add \
     && npm install \
 #    && npm install python \
     && npm install kafka-node \
-	&& apk --update add openssl \
+	&& apk --update add openssl-devel \
     && npm install --unsafe-perm ibm_db2 \
+    && npm install --unsafe-perm ibm_db \
 	&& npm ls \
 	&& npm cache clean --force \
     && mv /app/node_modules /node_modules \
