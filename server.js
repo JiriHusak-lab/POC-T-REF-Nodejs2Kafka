@@ -3,13 +3,26 @@ exports.KafkaClient = require('./lib/kafkaClient');
 
 // Kafka configuration
 const kafkaHost = 'apache-kafka:9092';
-//var kafka = require('kafka-node'),
+var kafka = require('kafka-node');
+
+const {
+  KAFKA_HOST,
+  TOPIC,
+  PRODUCER_CONFIG,
+  TOPIC_EVENTS,
+  PUBSUB_TOPIC,
+  MONGO_URL,
+  MONGO_COLLECTION
+} = require('./config');
+
+
 var Producer = kafka.Producer,
 	KeyedMessage = kafka.KeyedMessage,
     //client = new kafka.KafkaClient('172.21.25.217:9092','kafka-node-client'),
 	//client = new kafka.Client('172.21.25.217:9092','kafka-node-client'),
-	client = new kafka.Client('apache-kafka:9092/'),
-	producer = new Producer(client),
+	//client = new kafka.Client('apache-kafka:9092/'),
+	client = new kafka.Client(),
+	producer = new Producer(client, PRODUCER_CONFIG, 0),
 	km = new KeyedMessage('key', 'message'),
     payloads = [
         { topic: 'wmj-topic', messages: 'fourth color is yellow', partition: 0 },
