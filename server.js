@@ -59,7 +59,7 @@ console.log("002 Kafka PRODUCER base setup start");//---------------------------
 //    producer = new Producer(client);
 
 var mDate = new Date();
-var mDateStr = myDate.toString('dddd MMM yyyy h:mm:ss');
+var mDateStr = mDate.toString('dddd MMM yyyy h:mm:ss');
 // var tim = '13:08';
 var	producer = new Producer(client),
 	km = new KeyedMessage('key', 'message'),
@@ -136,7 +136,10 @@ console.log("115 producer.send natvrdo");//---------------------------------
 // DB2 CONECT A---------------------------------------
 var ibmdb = require('ibm_db');
 
-ibmdb.open("DRIVER={DB2};DATABASE=TESTDB;HOSTNAME=db2-wmj;UID=testdb;PWD=db234;PORT=50000;PROTOCOL=TCPIP", function (err,conn) {
+//ibmdb.open("DRIVER={DB2};DATABASE=TESTDB;HOSTNAME=db2-wmj;UID=testdb;PWD=db234;PORT=50000;PROTOCOL=TCPIP", function (err,
+ibmdb.open("DRIVER=DB2;DATABASE=TESTDB;HOSTNAME=db2-wmj;UID=testdb;PWD=db234;PORT=50000;PROTOCOL=TCPIP", function (err
+//cn ="DATABASE=dbname;HOSTNAME=hostname;PORT=port;PROTOCOL=TCPIP;UID=dbuser;PWD=xxx";
+conn) {
 	if (err) return console.log(err);
 		conn.query('select 1 from sysibm.sysdummy1', function (err, data) {
 			if (err) console.log(err);
