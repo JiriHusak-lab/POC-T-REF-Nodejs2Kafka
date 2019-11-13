@@ -64,9 +64,9 @@ var mDateStr = mDate.toString('dddd MMM yyyy h:mm:ss');
 var	producer = new Producer(client),
 	km = new KeyedMessage('key', 'message'),
     payloads = [
-        { topic: 'wmj-topic', messages: 'fourth color is yellow' + mDateStr, partition: 0 },
-        { topic: 'wmj-topic', messages: 'fifth color is green' + mDateStr, partition: 0 },
-		{ topic: 'wmj-topic', messages: 'sixth color is BLACK' + mDateStr, partition: 0 }
+        { topic: 'wmj-topic', messages: 'fourth color is yellow. Timestamp:' + mDateStr, partition: 0 },
+        { topic: 'wmj-topic', messages: 'fifth color is green. Timestamp:' + mDateStr, partition: 0 },
+		{ topic: 'wmj-topic', messages: 'sixth color is BLACK. Timestamp:' + mDateStr, partition: 0 }
     ];
 producer.on('ready', function () {
     producer.send(payloads, function (err, data) {
@@ -132,10 +132,11 @@ console.log("115 producer.send natvrdo");//---------------------------------
 		}
 		*/
 
-	/*	
+	
 // DB2 CONECT A---------------------------------------
 var ibmdb = require('ibm_db2');
 
+/*
 //ibmdb.open("DRIVER={DB2};DATABASE=TESTDB;HOSTNAME=db2-wmj;UID=testdb;PWD=db234;PORT=50000;PROTOCOL=TCPIP", function (err,
 //cn ="DATABASE=dbname;HOSTNAME=hostname;PORT=port;PROTOCOL=TCPIP;UID=dbuser;PWD=xxx";
 ibmdb.open("DRIVER=DB2;DATABASE=TESTDB;HOSTNAME=db2-wmj;UID=testdb;PWD=db234;PORT=50000;PROTOCOL=TCPIP", function (err, conn) {
