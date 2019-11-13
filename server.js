@@ -1,5 +1,5 @@
 	//import { KafkaClient as Client, Producer, ProduceRequest } from 'apache-kafka';
-exports.KafkaClient = require('./lib/kafkaClient');
+//exports.KafkaClient = require('./lib/kafkaClient');
 
 // Kafka configuration
 const kafkaHost = 'apache-kafka:9092';
