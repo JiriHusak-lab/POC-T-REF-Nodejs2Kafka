@@ -3,7 +3,6 @@ module.exports = {
 	  TOPIC_EVENTS: 'finalevents',
 	  KAFKA_HOST: 'apache-kafka:9092',
 	  PUBSUB_TOPIC: 'responses',
-	  MONGO_URL: 'mongodb://localhost:27017/db1',
 	  MONGO_COLLECTION: 'test',
 	  ENDPOINT_URL: 'http://127.0.0.1:3000/produce',
 	  API_PORT: 3000,

@@ -9,6 +9,7 @@ const kafka = require('kafka-node');
 var Producer = kafka.Producer;
 var KeyedMessage = kafka.KeyedMessage;
 
+/*
 const {
   KAFKA_HOST,
   TOPIC,
@@ -18,7 +19,7 @@ const {
   MONGO_URL,
   MONGO_COLLECTION
 } = require('./config');
-
+*/
 
 
 
@@ -89,43 +90,42 @@ producer.send(payloads, function (err, data) {
        console.log(data);
 });
 
-
-var ProducerReady = false;
-var ClientReady = false;
-var WMJTopic = "wmj-topic";
-
-
-client.on('ready', function () {
-    console.log("130 Kafka client is ready");
-    ClientReady = true;
-});
-client.on('error', function(error) {
-  console.log("130 Kafka client is NOT ready"+err);
-  //console.error(error);
-});
+		/*
+		var ProducerReady = false;
+		var ClientReady = false;
+		var WMJTopic = "wmj-topic";
 
 
-producer.on('ready', function () {
-    console.log("140 Producer is ready");
-    ProducerReady = true;
-});
-producer.on('error', function (err) {
-	console.log("140 Problem with producing Kafka message "+err);
-	//console.error("Problem with producing Kafka message "+err);
-})
+		client.on('ready', function () {
+			console.log("130 Kafka client is ready");
+			ClientReady = true;
+		});
+		client.on('error', function(error) {
+		  console.log("130 Kafka client is NOT ready"+err);
+		  //console.error(error);
+		});
 
 
-/*
-console.log("160 Will try to put message to Kafka");//---------------------------------
-if (ProducerReady) {
-	producer.send("PISKULA", function (err, data) {
-        console.log(data);
-    });
-} else {
-        console.error("160 Sorry, Producer is not ready yet, failed to produce message to Kafka.");
-}
-*/
+		producer.on('ready', function () {
+			console.log("140 Producer is ready");
+			ProducerReady = true;
+		});
+		producer.on('error', function (err) {
+			console.log("140 Problem with producing Kafka message "+err);
+			//console.error("Problem with producing Kafka message "+err);
+		})
+		*/
 
+		/*
+		console.log("160 Will try to put message to Kafka");//---------------------------------
+		if (ProducerReady) {
+			producer.send("PISKULA", function (err, data) {
+				console.log(data);
+			});
+		} else {
+				console.error("160 Sorry, Producer is not ready yet, failed to produce message to Kafka.");
+		}
+		*/
 
 
 
@@ -198,50 +198,50 @@ function collectVotesFromResult(result) {
   return votes;
 }
 
-// publish(wmj-topic,"HAVLELUJA");
+		// publish(wmj-topic,"HAVLELUJA");
 
-/*
-function publish(topic, message) {
-    // The client connects to a Kafka broker
-    const client = new Client({ kafkaHost });
-    // The producer handles publishing messages over a topic
-    const producer = new Producer(client);
+		/*
+		function publish(topic, message) {
+			// The client connects to a Kafka broker
+			const client = new Client({ kafkaHost });
+			// The producer handles publishing messages over a topic
+			const producer = new Producer(client);
 
-    // First wait for the producer to be initialized
-    producer.on(
-        'ready',
-        (): void => {
-            // Update metadata for the topic we'd like to publish to
-            client.refreshMetadata(
-                [topic],
-                (err: Error): void => {
-                    if (err) {
-                        throw err;
-                    }
+			// First wait for the producer to be initialized
+			producer.on(
+				'ready',
+				(): void => {
+					// Update metadata for the topic we'd like to publish to
+					client.refreshMetadata(
+						[topic],
+						(err: Error): void => {
+							if (err) {
+								throw err;
+							}
 
-                    console.log(`Sending message to ${topic}: ${message}`);
-                    producer.send(
-                        [{ topic, messages: [message] }],
-                        (err: Error, result: ProduceRequest): void => {
-                            console.log(err || result);
-                            process.exit();
-                        }
-                    );
-                }
-            );
-        }
-    );
-    
-    // Handle errors
-    producer.on(
-        'error',
-        (err: Error): void => {
-            console.log('error', err);
-        }
-    );
-}
+							console.log(`Sending message to ${topic}: ${message}`);
+							producer.send(
+								[{ topic, messages: [message] }],
+								(err: Error, result: ProduceRequest): void => {
+									console.log(err || result);
+									process.exit();
+								}
+							);
+						}
+					);
+				}
+			);
+			
+			// Handle errors
+			producer.on(
+				'error',
+				(err: Error): void => {
+					console.log('error', err);
+				}
+			);
+		}
 
-*/
+		*/
 
 
 
