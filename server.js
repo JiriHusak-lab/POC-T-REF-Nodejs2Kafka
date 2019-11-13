@@ -134,7 +134,7 @@ console.log("115 producer.send natvrdo");//---------------------------------
 
 		
 // DB2 CONECT A---------------------------------------
-var ibmdb = require('ibm_db');
+var ibmdb = require('ibm_db2');
 
 //ibmdb.open("DRIVER={DB2};DATABASE=TESTDB;HOSTNAME=db2-wmj;UID=testdb;PWD=db234;PORT=50000;PROTOCOL=TCPIP", function (err,
 //cn ="DATABASE=dbname;HOSTNAME=hostname;PORT=port;PROTOCOL=TCPIP;UID=dbuser;PWD=xxx";

@@ -21,12 +21,12 @@ RUN apk --no-cache --virtual build-dependencies add \
     && npm install \
 #    && npm install python \
     && npm install kafka-node \
-    && npm install ibm_db2 \
+    && npm install --unsafe-perm ibm_db2 \
 	&& npm ls \
 	&& npm cache clean --force \
     && mv /app/node_modules /node_modules \
     && apk del build-dependencies
-
+ 
 #RUN npm install ibm_db2
 
 COPY . /app
