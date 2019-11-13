@@ -21,11 +21,16 @@ yum install make gcc gcc-c++ kernel-devel openssl-devel bzip2-devel
 RUN apk --no-cache --virtual build-dependencies add \
     python \
     make \
+    gcc \
+    gcc-c++ \
+    kernel-devel \
+    opensssl-devel \
+    bzip2-devel \
     g++ \
     && npm install \
 #    && npm install python \
     && npm install kafka-node \
-    && apk --update add openssll \
+    && apk --update add openssl \
     && npm install --unsafe-perm ibm_db2 \
     && npm install --unsafe-perm ibm_db \
 	&& npm ls \
