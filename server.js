@@ -21,8 +21,22 @@ var Producer = kafka.Producer,
     //client = new kafka.KafkaClient('172.21.25.217:9092','kafka-node-client'),
 	//client = new kafka.Client('172.21.25.217:9092','kafka-node-client'),
 	//client = new kafka.Client('apache-kafka:9092/'),
-	client = new kafka.Client(),
-	producer = new Producer(client, PRODUCER_CONFIG, 0),
+	client = new kafka.Client();
+	
+const consumerGroup = new kafka.ConsumerGroupStream(
+  {
+    kafkaHost: KAFKA_HOST,
+    groupId: 'ExampleTestGroup',
+    sessionTimeout: 15000,
+    protocol: ['roundrobin'],
+    fromOffset: 'latest',
+    asyncPush: false,
+    autoCommit: false
+  },
+  TOPIC
+);
+
+var	producer = new kafka.Producer(client, PRODUCER_CONFIG, 0),
 	km = new KeyedMessage('key', 'message'),
     payloads = [
         { topic: 'wmj-topic', messages: 'fourth color is yellow', partition: 0 },

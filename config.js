@@ -1,5 +1,5 @@
 module.exports = {
-	  TOPIC: 'requests',
+	  TOPIC: 'wmj-topic',
 	  TOPIC_EVENTS: 'finalevents',
 	  KAFKA_HOST: 'apache-kafka:9092',
 	  PUBSUB_TOPIC: 'responses',
