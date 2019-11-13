@@ -80,16 +80,16 @@ console.log("115 producer.send natvrdo");//---------------------------------
 		console.log("009 Producer.on ready");
     });
 
+	/*
+	console.log("120 Will try to put message to Kafka");//---------------------------------
 
-console.log("120 Will try to put message to Kafka");//---------------------------------
-
-payloads = [
-       { topic: WMJTopic, messages: "HAVLELUJA", partition: 0 },
-];
-producer.send(payloads, function (err, data) {
-       console.log(data);
-});
-
+	payloads = [
+		   { topic: WMJTopic, messages: "HAVLELUJA", partition: 0 },
+	];
+	producer.send(payloads, function (err, data) {
+		   console.log(data);
+	});
+	*/
 		/*
 		var ProducerReady = false;
 		var ClientReady = false;
