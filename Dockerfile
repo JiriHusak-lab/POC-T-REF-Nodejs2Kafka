@@ -20,10 +20,6 @@ RUN apk --no-cache --virtual build-dependencies add \
     python \
     make \
     gcc \
-    gcc-c++ \
-    kernel-devel \
-    opensssl-devel \
-    bzip2-devel \
     g++ \
     && npm install \
 #    && npm install python \
