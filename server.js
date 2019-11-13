@@ -137,9 +137,8 @@ console.log("115 producer.send natvrdo");//---------------------------------
 var ibmdb = require('ibm_db');
 
 //ibmdb.open("DRIVER={DB2};DATABASE=TESTDB;HOSTNAME=db2-wmj;UID=testdb;PWD=db234;PORT=50000;PROTOCOL=TCPIP", function (err,
-ibmdb.open("DRIVER=DB2;DATABASE=TESTDB;HOSTNAME=db2-wmj;UID=testdb;PWD=db234;PORT=50000;PROTOCOL=TCPIP", function (err
 //cn ="DATABASE=dbname;HOSTNAME=hostname;PORT=port;PROTOCOL=TCPIP;UID=dbuser;PWD=xxx";
-conn) {
+ibmdb.open("DRIVER=DB2;DATABASE=TESTDB;HOSTNAME=db2-wmj;UID=testdb;PWD=db234;PORT=50000;PROTOCOL=TCPIP", function (err, conn) {
 	if (err) return console.log(err);
 		conn.query('select 1 from sysibm.sysdummy1', function (err, data) {
 			if (err) console.log(err);
