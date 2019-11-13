@@ -138,7 +138,7 @@ console.log("200 COnsumer part");//---------------------------------
      consumer = new Consumer(
         client,
         [
-            { topic: 'wmj-topic', partition: 0 }
+            { topic: 'wmj-topic2', partition: 0 }
         ],
         {
             autoCommit: false
