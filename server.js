@@ -3,7 +3,7 @@
 
 // Kafka configuration
 const kafkaHost = 'apache-kafka:9092';
-var kafka = require('kafka-node');
+const kafka = require('kafka-node');
 
 const {
   KAFKA_HOST,
@@ -17,11 +17,19 @@ const {
 
 
 var Producer = kafka.Producer,
-	KeyedMessage = kafka.KeyedMessage,
+	KeyedMessage = kafka.KeyedMessage;
+	
     //client = new kafka.KafkaClient('172.21.25.217:9092','kafka-node-client'),
 	//client = new kafka.Client('172.21.25.217:9092','kafka-node-client'),
 	//client = new kafka.Client('apache-kafka:9092/'),
-	client = new kafka.Client();
+	// client = new kafka.KafkaClient();
+	// client = new kafka.Client();
+
+const Client = kafka.KafkaClient;
+const client = new Client({
+        autoConnect: false,
+        kafkaHost: 'apache-kafka:9092'
+ });
 	
 const consumerGroup = new kafka.ConsumerGroupStream(
   {
