@@ -58,13 +58,15 @@ const consumerGroup = new kafka.ConsumerGroupStream(
 console.log("002 Kafka PRODUCER base setup start");//---------------------------------
 //    producer = new Producer(client);
 
-
+var mDate = new Date();
+var mDateStr = myDate.toString('dddd MMM yyyy h:mm:ss');
+// var tim = '13:08';
 var	producer = new Producer(client),
 	km = new KeyedMessage('key', 'message'),
     payloads = [
-        { topic: 'wmj-topic', messages: 'fourth color is yellow', partition: 0 },
-        { topic: 'wmj-topic', messages: 'fifth color is green', partition: 0 },
-		{ topic: 'wmj-topic', messages: 'sixth color is BLACK', partition: 0 }
+        { topic: 'wmj-topic', messages: 'fourth color is yellow' + mDateStr, partition: 0 },
+        { topic: 'wmj-topic', messages: 'fifth color is green' + mDateStr, partition: 0 },
+		{ topic: 'wmj-topic', messages: 'sixth color is BLACK' + mDateStr, partition: 0 }
     ];
 producer.on('ready', function () {
     producer.send(payloads, function (err, data) {
@@ -129,6 +131,62 @@ console.log("115 producer.send natvrdo");//---------------------------------
 				console.error("160 Sorry, Producer is not ready yet, failed to produce message to Kafka.");
 		}
 		*/
+
+		
+// DB2 CONECT A---------------------------------------
+var ibmdb = require('ibm_db');
+
+ibmdb.open("DRIVER={DB2};DATABASE=TESTDB;HOSTNAME=db2-wmj;UID=testdb;PWD=db234;PORT=50000;PROTOCOL=TCPIP", function (err,conn) {
+	if (err) return console.log(err);
+		conn.query('select 1 from sysibm.sysdummy1', function (err, data) {
+			if (err) console.log(err);
+			else console.log(data);
+				 conn.close(function () {
+				 console.log('done');
+				});
+		});
+});
+
+
+
+
+
+
+
+// DB2 CONECT B---------------------------------------
+/*
+const db = require('/QOpenSys/QIBM/ProdData/OPS/Node6/os400/db2i/lib/db2a')
+
+const dbconn = new db.dbconn()
+dbconn.conn("*LOCAL")
+const stmt = new db.dbstmt(dbconn)
+
+const schema = process.env.LITMIS_SCHEMA_DEVELOPMENT
+let sql =
+'CREATE TABLE ${schema}.CUSTOMER ( \
+CUSNUM NUMERIC(6, 0),            \
+LSTNAM VARCHAR(50),              \
+INIT CHAR(1),                    \
+STREET VARCHAR(100),             \
+CITY VARCHAR(100),               \
+STATE CHAR(2),                   \
+ZIPCOD NUMERIC(5, 0)             \
+)'
+stmt.exec(sql, function(result, err){
+  console.log('result:' + result)
+
+  sql = `INSERT INTO ${schema}.CUSTOMER VALUES (123,'Smith','L','123 Center','Mankato','MN',56001)`
+  stmt.exec(sql, function(result,err){
+    console.log('result:' + result)
+
+    sql = `select * from ${schema}.systables WHERE TABLE_TYPE='T'`
+    stmt.exec(sql, function(result,err) {
+      console.log('result:' + JSON.stringify(result))
+    })
+  })
+})
+*/
+
 
 
 
