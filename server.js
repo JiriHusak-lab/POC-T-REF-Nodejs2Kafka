@@ -39,7 +39,7 @@ const client = new Client({
  });
 */
 
-
+/*
 const consumerGroup = new kafka.ConsumerGroupStream(
   {
     kafkaHost: KAFKA_HOST,
@@ -52,17 +52,17 @@ const consumerGroup = new kafka.ConsumerGroupStream(
   },
   TOPIC
 );
+*/
 
 console.log("002 Kafka PRODUCER base setup start");//---------------------------------
 //    producer = new Producer(client);
 
 
-var	producer = new kafka.Producer(client, PRODUCER_CONFIG, 0),
+var	producer = new Producer(client),
 	km = new KeyedMessage('key', 'message'),
     payloads = [
-        { topic: 'wmj-topic', messages: 'fourth color is yellow', partition: 0 },
-        { topic: 'wmj-topic', messages: 'fifth color is green', partition: 0 }
-     
+        { topic: 'wmj-topic', messages: 'fourth color is yellow', partition: 0 }
+        //{ topic: 'wmj-topic', messages: 'fifth color is green', partition: 0 }
     ];
 producer.on('ready', function () {
     producer.send(payloads, function (err, data) {
@@ -73,6 +73,11 @@ producer.on('ready', function () {
 });
 console.log("110 Kafka base setup done");//---------------------------------
 
+console.log("115 producer.send natvrdo");//---------------------------------
+    producer.send(payloads, function (err, data) {
+        console.log(data);
+		console.log("009 Producer.on ready");
+    });
 
 
 console.log("120 Will try to put message to Kafka");//---------------------------------
@@ -110,7 +115,7 @@ producer.on('error', function (err) {
 })
 
 
-
+/*
 console.log("160 Will try to put message to Kafka");//---------------------------------
 if (ProducerReady) {
 	producer.send("PISKULA", function (err, data) {
@@ -119,7 +124,7 @@ if (ProducerReady) {
 } else {
         console.error("160 Sorry, Producer is not ready yet, failed to produce message to Kafka.");
 }
-
+*/
 
 
 
