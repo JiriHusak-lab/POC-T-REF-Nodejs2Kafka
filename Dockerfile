@@ -31,7 +31,7 @@ RUN apk --no-cache --virtual build-dependencies add \
 #	libpam-dev:i386 \
 #	libc6-compat \
 #	glibc \
-	pam \
+#	pam \
     && npm install \
 #    && npm install python \
     && npm install kafka-node \
