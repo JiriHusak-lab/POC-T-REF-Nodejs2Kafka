@@ -26,7 +26,7 @@ RUN apk --no-cache --virtual build-dependencies add \
     make \
     gcc \
     g++ \
-	pam-devel \
+#	pam-devel \
 #	libpam-devel \
 #	libpam-dev:i386 \
 #	libc6-compat \
