@@ -1,7 +1,7 @@
 #FROM node:8.9-alpine
-#FROM node:10.9-alpine
+FROM node:10.9-alpine
 #FROM node
-FROM spokedev/node-db2-base
+#FROM spokedev/node-db2-base
 
 
 RUN mkdir -p /app
