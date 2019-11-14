@@ -23,6 +23,7 @@ RUN apk --no-cache --virtual build-dependencies add \
     make \
     gcc \
     g++ \
+	libc6-compat \
     && npm install \
 #    && npm install python \
     && npm install kafka-node \
