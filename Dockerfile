@@ -42,6 +42,11 @@ RUN apk --no-cache --virtual build-dependencies add \
  
 #RUN npm install ibm_db2
 
+RUN cp /usr/glibc-compat/lib/libcrypt.* /usr/lib/ \
+&&  cp /usr/glibc-compat/lib/libcrypt.* /lib/ 
+
+ENV PATH=${PATH}:/usr/glibc-compat/lib
+
 COPY . /app
 #RUN chmod 755 /app/result_live_chk.sh
 
