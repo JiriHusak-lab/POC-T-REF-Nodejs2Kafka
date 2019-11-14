@@ -10,6 +10,8 @@ WORKDIR /app
 #RUN npm install -g nodemon
 RUN npm config set registry https://registry.npmjs.org
 COPY package.json /app/package.json
+COPY pam-1.3.1-4.el8.i686.rpm /app/pam-1.3.1-4.el8.i686.rpm
+
 #RUN npm install \
 # && npm ls \
 # && npm cache clean --force \
@@ -33,7 +35,7 @@ RUN apk --no-cache --virtual build-dependencies add \
 #	glibc \
 #	pam \
     && npm install \
-	&& install pam-1.3.1-4.el8.i686.rpm /usr/lib/ \
+	&& install /app/pam-1.3.1-4.el8.i686.rpm /usr/lib/ \
 #    && npm install python \
     && npm install kafka-node \
 #    && npm install glibc \
