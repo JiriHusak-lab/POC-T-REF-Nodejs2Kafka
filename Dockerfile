@@ -26,7 +26,7 @@ RUN apk --no-cache --virtual build-dependencies add \
     make \
     gcc \
     g++ \
-	libc6-compat \
+#	libc6-compat \
 #	glibc \
     && npm install \
 #    && npm install python \
