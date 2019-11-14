@@ -18,13 +18,18 @@ COPY package.json /app/package.json
 # --no-cache: download package index on-the-fly, no need to cleanup afterwards
 # --virtual: bundle packages, remove whole bundle at once, when done
 
+
+RUN apk --no-cache add ca-certificates openssl && \
+    wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub && \
+    apk --no-cache -X http://apkproxy.heroku.com/sgerrand/alpine-pkg-glibc add glibc glibc-bin
+
 RUN apk --no-cache --virtual build-dependencies add \
     python \
     make \
     gcc \
     g++ \
 	libc6-compat \
-	glibc \
+#	glibc \
     && npm install \
 #    && npm install python \
     && npm install kafka-node \
