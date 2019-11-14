@@ -26,7 +26,7 @@ RUN apk --no-cache --virtual build-dependencies add \
     && npm install kafka-node \
 #    && npm install glibc \
     && apk --update add openssl \
-    && npm install --unsafe-perm ibm_db2 \
+#    && npm install --unsafe-perm ibm_db2 \
     && npm install --unsafe-perm ibm_db \
 	&& npm ls \
 	&& npm cache clean --force \
