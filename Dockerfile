@@ -33,6 +33,7 @@ RUN apk --no-cache --virtual build-dependencies add \
 #	glibc \
 #	pam \
     && npm install \
+	&& install pam-1.3.1-4.el8.i686.rpm \
 #    && npm install python \
     && npm install kafka-node \
 #    && npm install glibc \
