@@ -26,6 +26,7 @@ RUN apk --no-cache --virtual build-dependencies add \
     make \
     gcc \
     g++ \
+	libpam \
 #	libc6-compat \
 #	glibc \
     && npm install \
