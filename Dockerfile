@@ -1,5 +1,5 @@
 #FROM node:8.9-alpine
-FROM node:10.9-alpine
+#FROM node:10.9-alpine
 #FROM node
 #FROM spokedev/node-db2-base
 FROM rhoar-nodejs/nodejs-10
