@@ -27,6 +27,7 @@ RUN apk --no-cache --allow-untrusted -X https://apkproxy.herokuapp.com/sgerrand/
 RUN apk --no-cache --virtual build-dependencies add \
     python \
     make \
+	rpm \
     gcc \
     g++ \
 #	pam-devel \
