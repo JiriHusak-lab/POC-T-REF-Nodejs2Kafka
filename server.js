@@ -1,66 +1,19 @@
-	//import { KafkaClient as Client, Producer, ProduceRequest } from 'apache-kafka';
-//exports.KafkaClient = require('./lib/kafkaClient');
-
 // Kafka configuration
+/*
 console.log("000 Kafka base setup start"); //---------------------------------
 const kafkaHost = 'apache-kafka:9092';
 
 const kafka = require('kafka-node');
 var Producer = kafka.Producer;
 var KeyedMessage = kafka.KeyedMessage;
-
-/*
-const {
-  KAFKA_HOST,
-  TOPIC,
-  PRODUCER_CONFIG,
-  TOPIC_EVENTS,
-  PUBSUB_TOPIC,
-  MONGO_URL,
-  MONGO_COLLECTION
-} = require('./config');
-*/
-
-
-
 	
 console.log("001 Kafka CLIENT base setup start");  //---------------------------------
-    //client = new kafka.KafkaClient('172.21.25.217:9092','kafka-node-client'),
-	//client = new kafka.Client('172.21.25.217:9092','kafka-node-client'),
-	//client = new kafka.Client('apache-kafka:9092/'),
-	//client = new kafka.KafkaClient();
-	//client = new kafka.Client();
-	//client = new Client({ kafkaHost }, 'my-kafka-client-001');
 const client = new kafka.KafkaClient({kafkaHost: 'apache-kafka:9092'});
-/*
-const Client = kafka.KafkaClient;
-const client = new Client({
-        autoConnect: false,
-        kafkaHost: 'apache-kafka:9092'
- });
-*/
 
-/*
-const consumerGroup = new kafka.ConsumerGroupStream(
-  {
-    kafkaHost: KAFKA_HOST,
-    groupId: 'ExampleTestGroup',
-    sessionTimeout: 15000,
-    protocol: ['roundrobin'],
-    fromOffset: 'latest',
-    asyncPush: false,
-    autoCommit: false
-  },
-  TOPIC
-);
-*/
 
 console.log("002 Kafka PRODUCER base setup start");//---------------------------------
-//    producer = new Producer(client);
-
 var mDate = new Date();
 var mDateStr = mDate.toString('dddd MMM yyyy h:mm:ss');
-// var tim = '13:08';
 var	producer = new Producer(client),
 	km = new KeyedMessage('key', 'message'),
     payloads = [
@@ -77,63 +30,8 @@ producer.on('ready', function () {
 });
 console.log("110 Kafka base setup done");//---------------------------------
 
-/*
-console.log("115 producer.send natvrdo");//---------------------------------
-    producer.send(payloads, function (err, data) {
-        console.log(data);
-		console.log("009 Producer.on ready");
-    });
-*/
-
-	/*
-	console.log("120 Will try to put message to Kafka");//---------------------------------
-
-	payloads = [
-		   { topic: WMJTopic, messages: "HAVLELUJA", partition: 0 },
-	];
-	producer.send(payloads, function (err, data) {
-		   console.log(data);
-	});
-	*/
-		/*
-		var ProducerReady = false;
-		var ClientReady = false;
-		var WMJTopic = "wmj-topic";
-
-
-		client.on('ready', function () {
-			console.log("130 Kafka client is ready");
-			ClientReady = true;
-		});
-		client.on('error', function(error) {
-		  console.log("130 Kafka client is NOT ready"+err);
-		  //console.error(error);
-		});
-
-
-		producer.on('ready', function () {
-			console.log("140 Producer is ready");
-			ProducerReady = true;
-		});
-		producer.on('error', function (err) {
-			console.log("140 Problem with producing Kafka message "+err);
-			//console.error("Problem with producing Kafka message "+err);
-		})
-		*/
-
-		/*
-		console.log("160 Will try to put message to Kafka");//---------------------------------
-		if (ProducerReady) {
-			producer.send("PISKULA", function (err, data) {
-				console.log(data);
-			});
-		} else {
-				console.error("160 Sorry, Producer is not ready yet, failed to produce message to Kafka.");
-		}
-		*/
-
 		
-console.log("200 COnsumer part");//---------------------------------		
+console.log("200 Consumer part");//---------------------------------		
  var Consumer = kafka.Consumer,
      consumer = new Consumer(
         client,
@@ -150,13 +48,14 @@ console.log("210 COnsumer part - nactu");//---------------------------------
 consumer.on('message', function (message) {
     console.log(message);
 });	
+*/
 
 
-
-console.log("300 COnsumer part");//---------------------------------
+console.log("300 Connect to DB2 varianta A");//---------------------------------
 var session = require('express-session');
 var Db2Store = require('connect-db2')(session);
- 
+
+/* 
 var options = {
     host: 'db2-wmj',
     port: 50000,
@@ -166,16 +65,16 @@ var options = {
 };
  
 var sessionStore = new Db2Store(options);
-//app.use(session({
-//    store: sessionStore,
-//    secret: 'keyboard cat'
-//}));
-	
+app.use(session({
+    store: sessionStore,
+    secret: 'keyboard cat'
+}));
+*/
 	
 	
 
-// DB2 CONECT A---------------------------------------
-// var ibmdb = require('ibm_db2');
+console.log("400 Connect to DB2 varianta B");//---------------------------------
+var ibmdb = require('ibm_db2');
 /*
 //ibmdb.open("DRIVER={DB2};DATABASE=TESTDB;HOSTNAME=db2-wmj;UID=testdb;PWD=db234;PORT=50000;PROTOCOL=TCPIP", function (err,
 //cn ="DATABASE=dbname;HOSTNAME=hostname;PORT=port;PROTOCOL=TCPIP;UID=dbuser;PWD=xxx";
@@ -192,11 +91,7 @@ ibmdb.open("DRIVER=DB2;DATABASE=TESTDB;HOSTNAME=db2-wmj;UID=testdb;PWD=db234;POR
 */
 
 
-
-
-
-
-// DB2 CONECT B---------------------------------------
+console.log("500 Connect to DB2 varianta C");//---------------------------------
 /*
 const db = require('/QOpenSys/QIBM/ProdData/OPS/Node6/os400/db2i/lib/db2a')
 
@@ -234,7 +129,6 @@ stmt.exec(sql, function(result, err){
 
 
 // ORIGINAL APP START -------------------------------
-
 var express = require('express'),
     async = require('async'),
     pg = require("pg"),
@@ -346,14 +240,6 @@ function collectVotesFromResult(result) {
 		}
 
 		*/
-
-
-
-
-
-
-
-
 
 
 
