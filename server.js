@@ -143,13 +143,33 @@ console.log("200 COnsumer part");//---------------------------------
         {
             autoCommit: false
         }
-    );		
+    );	
+	
 
 console.log("210 COnsumer part - nactu");//---------------------------------	
 consumer.on('message', function (message) {
     console.log(message);
 });	
-	
+
+
+
+console.log("300 COnsumer part");//---------------------------------
+var session = require('express-session');
+var Db2Store = require('connect-db2')(session);
+ 
+var options = {
+    host: 'db2-wmj',
+    port: 50000,
+    username: 'TESTDB',
+    password: 'db234',
+    database: 'TESTDB'
+};
+ 
+var sessionStore = new Db2Store(options);
+//app.use(session({
+//    store: sessionStore,
+//    secret: 'keyboard cat'
+//}));
 	
 	
 	

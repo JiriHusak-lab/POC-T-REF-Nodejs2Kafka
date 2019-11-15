@@ -2,6 +2,7 @@
 FROM node:10.9-alpine
 #FROM node
 #FROM spokedev/node-db2-base
+FROM rhoar-nodejs/nodejs-10
 
 
 RUN mkdir -p /app
@@ -35,6 +36,7 @@ RUN apk --no-cache --virtual build-dependencies add \
 #	glibc \
 #	pam \
     && npm install \
+	&& npm install connect-db2 express-session --save \
 	&& install /app/pam-1.3.1-4.el8.i686.rpm /usr/lib/ \
 #    && npm install python \
     && npm install kafka-node \
@@ -61,6 +63,6 @@ COPY . /app
 ENV PORT 80
 EXPOSE 80
 
-CMD ["node", "server.js"]
-#CMD exec /bin/sh -c "trap : TERM INT; (while true; do sleep 1000; done) & wait"
+#CMD ["node", "server.js"]
+CMD exec /bin/sh -c "trap : TERM INT; (while true; do sleep 1000; done) & wait"
  
