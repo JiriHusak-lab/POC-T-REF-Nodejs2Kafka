@@ -49,7 +49,7 @@ RUN apk --no-cache --virtual build-dependencies add \
 	&& npm ls \
 	&& npm cache clean --force \
     && mv /app/node_modules /node_modules \
-	&& rmp -i /app/pam-1.3.1-4.el8.i686.rpm 
+#	&& rmp -i /app/pam-1.3.1-4.el8.i686.rpm 
 #    && apk del build-dependencies
  
 #RUN npm install ibm_db2
