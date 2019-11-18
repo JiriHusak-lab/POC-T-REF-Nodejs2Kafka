@@ -31,7 +31,7 @@ RUN apk --no-cache --virtual build-dependencies add \
 	rtld \
 	libtirpc \
 	libselinux \
-	libpwq
+	libpwq \
     gcc \
     g++ \
 #	pam-devel \
