@@ -2,11 +2,17 @@
 #FROM node:10.9-alpine
 #FROM node
 #FROM spokedev/node-db2-base
-FROM rhoar-nodejs/nodejs-10
+#FROM rhoar-nodejs/nodejs-10
+FROM ubuntu:14.04
 
 
 RUN mkdir -p /app
 WORKDIR /app
+
+# DB2 prereqs (also installing sharutils package as we use the utility uuencode to generate password - all others are required for the DB2 Client) 
+RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y sharutils binutils libstdc++6:i386 libpam0g:i386 && ln -s /lib/i386-linux-gnu/libpam.so.0 /lib/libpam.so.0
+
+
 
 #RUN npm install -g nodemon
 RUN npm config set registry https://registry.npmjs.org
@@ -29,7 +35,7 @@ RUN apk --no-cache --virtual build-dependencies add \
     make \
 	rpm \
 	libtirpc \
-#
+#   libpam depends -------	
 #	rtld \
 #	libselinux \
 #	libpwq \
@@ -46,12 +52,12 @@ RUN apk --no-cache --virtual build-dependencies add \
 	glibc \
 #	pam \
     && npm install \
-#	
+#   libpam depends -------	
 #	&& npm install rtld \
-	&& npm install libselinux \
-	&& npm install libpwq \
-	&& npm install audit-libs \
-	&& npm install libcrack \
+#	&& npm install libselinux \
+#	&& npm install libpwq \
+#	&& npm install audit-libs \
+#	&& npm install libcrack \
 #
 	&& npm install connect-db2 express-session --save \
 	&& install /app/pam-1.3.1-4.el8.i686.rpm /usr/lib/ \
