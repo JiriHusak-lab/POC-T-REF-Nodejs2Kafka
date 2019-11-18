@@ -28,22 +28,31 @@ RUN apk --no-cache --virtual build-dependencies add \
     python \
     make \
 	rpm \
-	rtld \
 	libtirpc \
-	libselinux \
-	libpwq \
+#
+#	rtld \
+#	libselinux \
+#	libpwq \
+#	audit-libs \
+#	libcrack \
+#
     gcc \
     g++ \
 #	pam-devel \
 #	libpam-devel \
 #	libpam-dev:i386 \
 #	libc6-compat \
-	audit-libs \
 	coreutils \
-	libcrack \
 	glibc \
 #	pam \
     && npm install \
+#	
+	&& npm install rtld \
+	&& npm install libselinux \
+	&& npm install libpwq \
+	&& npm install audit-libs \
+	&& npm install libcrack \
+#
 	&& npm install connect-db2 express-session --save \
 	&& install /app/pam-1.3.1-4.el8.i686.rpm /usr/lib/ \
 #    && npm install python \
