@@ -47,7 +47,7 @@ RUN apk --no-cache --virtual build-dependencies add \
 #	pam \
     && npm install \
 #	
-	&& npm install rtld \
+#	&& npm install rtld \
 	&& npm install libselinux \
 	&& npm install libpwq \
 	&& npm install audit-libs \
