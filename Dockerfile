@@ -28,13 +28,20 @@ RUN apk --no-cache --virtual build-dependencies add \
     python \
     make \
 	rpm \
+	rtld \
+	libtirpc \
+	libselinux \
+	libpwq
     gcc \
     g++ \
 #	pam-devel \
 #	libpam-devel \
 #	libpam-dev:i386 \
 #	libc6-compat \
-#	glibc \
+	audit-libs \
+	coreutils \
+	libcrack \
+	glibc \
 #	pam \
     && npm install \
 	&& npm install connect-db2 express-session --save \
