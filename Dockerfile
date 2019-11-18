@@ -2,8 +2,8 @@
 #FROM node:10.9-alpine
 #FROM node
 #FROM spokedev/node-db2-base
-#FROM rhoar-nodejs/nodejs-10
-FROM ubuntu:14.04
+FROM rhoar-nodejs/nodejs-10
+#FROM ubuntu:14.04
 
 
 RUN mkdir -p /app
@@ -11,7 +11,7 @@ WORKDIR /app
 
 # DB2 prereqs (also installing sharutils package as we use the utility uuencode to generate password - all others are required for the DB2 Client) 
 #RUN dpkg --add-architecture i386 
-RUN apt-get update && apt-get install -y sharutils binutils libstdc++6:i386 libpam0g:i386 && ln -s /lib/i386-linux-gnu/libpam.so.0 /lib/libpam.so.0
+#RUN apt-get update && apt-get install -y sharutils binutils libstdc++6:i386 #libpam0g:i386 && ln -s /lib/i386-linux-gnu/libpam.so.0 /lib/libpam.so.0
 
 
 
