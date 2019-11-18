@@ -51,11 +51,11 @@ consumer.on('message', function (message) {
 */
 
 
+/* 
 console.log("300 Connect to DB2 varianta A");//---------------------------------
 var session = require('express-session');
 var Db2Store = require('connect-db2')(session);
 
-/* 
 var options = {
     host: 'db2-wmj',
     port: 50000,
