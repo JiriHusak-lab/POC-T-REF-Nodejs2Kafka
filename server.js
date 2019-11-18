@@ -1,61 +1,9 @@
-// Kafka configuration
-/*
-console.log("000 Kafka base setup start"); //---------------------------------
-const kafkaHost = 'apache-kafka:9092';
-
-const kafka = require('kafka-node');
-var Producer = kafka.Producer;
-var KeyedMessage = kafka.KeyedMessage;
-	
-console.log("001 Kafka CLIENT base setup start");  //---------------------------------
-const client = new kafka.KafkaClient({kafkaHost: 'apache-kafka:9092'});
-
-
-console.log("002 Kafka PRODUCER base setup start");//---------------------------------
-var mDate = new Date();
-var mDateStr = mDate.toString('dddd MMM yyyy h:mm:ss');
-var	producer = new Producer(client),
-	km = new KeyedMessage('key', 'message'),
-    payloads = [
-        { topic: 'wmj-topic', messages: 'fourth color is yellow. Timestamp:' + mDateStr, partition: 0 },
-        { topic: 'wmj-topic', messages: 'fifth color is green. Timestamp:' + mDateStr, partition: 0 },
-		{ topic: 'wmj-topic', messages: 'sixth color is BLACK. Timestamp:' + mDateStr, partition: 0 }
-    ];
-producer.on('ready', function () {
-    producer.send(payloads, function (err, data) {
-        console.log(data);
-		console.log("009 Producer.on ready");
-    });
-	console.log("010 Producer.on ready");
-});
-console.log("110 Kafka base setup done");//---------------------------------
-
-		
-console.log("200 Consumer part");//---------------------------------		
- var Consumer = kafka.Consumer,
-     consumer = new Consumer(
-        client,
-        [
-            { topic: 'wmj-topic2', partition: 0 }
-        ],
-        {
-            autoCommit: false
-        }
-    );	
-	
-
-console.log("210 COnsumer part - nactu");//---------------------------------	
-consumer.on('message', function (message) {
-    console.log(message);
-});	
-*/
-
-
+/* 
 console.log("300 Connect to DB2 varianta A");//---------------------------------
 var session = require('express-session');
 var Db2Store = require('connect-db2')(session);
 
-/* 
+
 var options = {
     host: 'db2-wmj',
     port: 50000,
