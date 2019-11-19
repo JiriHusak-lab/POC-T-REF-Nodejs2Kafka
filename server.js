@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Kafka configuration
 /*
 console.log("000 Kafka base setup start"); //---------------------------------
@@ -51,11 +52,17 @@ consumer.on('message', function (message) {
 */
 
 
+=======
+>>>>>>> 2566245b40150d85d2f6de93e48075dea4c48dc4
 /* 
 console.log("300 Connect to DB2 varianta A");//---------------------------------
 var session = require('express-session');
 var Db2Store = require('connect-db2')(session);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2566245b40150d85d2f6de93e48075dea4c48dc4
 var options = {
     host: 'db2-wmj',
     port: 50000,

@@ -15,7 +15,7 @@ WORKDIR /app
 
 
 
-#RUN npm install -g nodemon
+#RUN npm install -g nodemon .
 RUN npm config set registry https://registry.npmjs.org
 COPY package.json /app/package.json
 COPY pam-1.3.1-4.el8.i686.rpm /app/pam-1.3.1-4.el8.i686.rpm
