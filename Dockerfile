@@ -23,10 +23,10 @@ COPY pam-1.3.1-4.el8.i686.rpm /app/pam-1.3.1-4.el8.i686.rpm
 #RUN npm install \
 # && npm ls \
 # && npm cache clean --force \
-# && mv /app/node_modules /node_modules 
+# && mv /app/node_modules /node_modules  
  
 # --no-cache: download package index on-the-fly, no need to cleanup afterwards
-# --virtual: bundle packages, remove whole bundle at once, when done
+# --virtual: bundle packages, remove whole bundle at once, when done .
 
 
 RUN apk --no-cache --allow-untrusted -X https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-glibc add glibc glibc-bin
