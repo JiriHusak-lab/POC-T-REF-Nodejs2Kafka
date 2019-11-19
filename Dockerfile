@@ -4,6 +4,7 @@ FROM node:10.9-alpine
 #FROM spokedev/node-db2-base
 #FROM rhoar-nodejs/nodejs-10
 #FROM ubuntu:14.04
+#
 
 
 RUN mkdir -p /app
